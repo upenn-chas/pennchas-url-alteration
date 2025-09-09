@@ -1,0 +1,27 @@
+# url_alteration.node_add_page:
+#   path: '/custom/add/page'  # This is the dynamic path
+#   defaults:
+#     _controller: 'Drupal\url_alteration\Controller\NodeFormController::renderForm'
+#     _title: 'Add Page'
+#   requirements:
+#     _permission: 'create page content'
+
+url_alteration.custom_node_add_page:
+  path: '/node/add'
+  defaults:
+    _title: 'Add content'
+    _controller: '\Drupal\url_alteration\Controller\CustomNodeController::addPage'
+  arguments: ['@renderer']
+  options:
+    _node_operation_route: TRUE
+  requirements:
+    _entity_create_any_access: 'node'
+url_alteration.user_login:
+  path: /user/login
+  defaults:
+    _controller: '\Drupal\url_alteration\Controller\LoginController::userLogin'
+    _title: 'Login'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: TRUE
